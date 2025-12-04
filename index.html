@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Body Count Checker</title>
+    <style>
+        body {
+            font-family: Poppins, sans-serif;
+            background: radial-gradient(circle, #181818, #000);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .box {
+            background: rgba(30, 30, 30, 0.9);
+            padding: 35px;
+            border-radius: 15px;
+            text-align: center;
+            width: 350px;
+            box-shadow: 0 0 20px rgba(0,255,200,0.25);
+            backdrop-filter: blur(6px);
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        input {
+            width: 90%;
+            padding: 13px;
+            border-radius: 8px;
+            border: none;
+            margin-top: 10px;
+            font-size: 16px;
+        }
+        button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            background: #00ffd2;
+            cursor: pointer;
+            font-size: 17px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #00b89c;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            opacity: 0;
+            transition: 0.6s;
+        }
+        .pulse {
+            animation: pulse 0.7s forwards;
+        }
+        @keyframes pulse {
+            0% { transform: scale(0.85); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        #anim img {
+            width: 220px;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Body Count Checker 🔥</h2>
+    <input type="number" id="bodycount" placeholder="Enter your body count">
+    <button onclick="check()">Check</button>
+
+    <p id="result"></p>
+    <div id="anim">
+        <img id="dance" src="https://media.tenor.com/LJ6qxYv8zSoAAAAj/dance.gif">
+        <img id="pray" src="https://media.tenor.com/HUyWOLHOx14AAAAj/pray.gif">
+        <img id="cool" src="https://media.tenor.com/7SUlaVyulsgAAAAj/cool.gif">
+    </div>
+</div>
+
+<script>
+    function check() {
+        let n = document.getElementById("bodycount").value;
+        let result = document.getElementById("result");
+
+        document.getElementById("dance").style.display = "none";
+        document.getElementById("pray").style.display = "none";
+        document.getElementById("cool").style.display = "none";
+
+        if (n === "") {
+            result.innerHTML = "⚠ Please enter a number!";
+            result.style.color = "yellow";
+            return;
+        }
+
+        n = Number(n);
+        result.className = "";
+
+        if (n > 3) {
+            result.innerHTML = "💥 Romance power MAX mode! — 'Kabir Singh x Ranveer Singh crossover'";
+            result.style.color = "#ff6a00";
+            document.getElementById("dance").style.display = "block";
+        }
+        else if (n === 0) {
+            result.innerHTML = "💫 Single-player mode but heart still platinum — 'Itna pure kaise bhai?!'";
+            result.style.color = "#00eaff";
+            document.getElementById("pray").style.display = "block";
+        }
+        else {
+            result.innerHTML = "🔥 Balanced romantic experience — 'Hero-entry + soft-lover combo'";
+            result.style.color = "#00ff73";
+            document.getElementById("cool").style.display = "block";
+        }
+
+        result.classList.add("pulse");
+    }
+</script>
+
+</body>
+</html>
